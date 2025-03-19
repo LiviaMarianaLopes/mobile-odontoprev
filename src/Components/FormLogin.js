@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, Text, TextInput, Button, StyleSheet, Alert, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, StyleSheet, Alert, TouchableOpacity } from "react-native";
 import { Checkbox } from "react-native-paper";
 
 
@@ -30,6 +30,7 @@ export default function FormLogin({ onLogar }) {
           onChangeText={setEmail}
           placeholder="E-mail"
           placeholderTextColor="#888"
+          keyboardType="email-address"
         />
       </View>
 
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginBottom: 30,
     color: "#0063FF",
-    paddingRight: 50,
+    alignSelf: "flex-start",
   },
   inputContainer: {
     width: "100%",

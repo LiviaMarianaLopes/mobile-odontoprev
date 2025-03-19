@@ -1,19 +1,23 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+import HeaderHome from "../Components/HeaderHome";
+import ServicesGrid from "../Components/ServicesGrid";
 
 export default function TelaUserHome() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Home do usuário</Text>
+      <HeaderHome/>
+      <ServicesGrid/>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
+    backgroundColor:"#FFF",
+    height:"100%"
   },
   text: {
     fontSize: 24,
