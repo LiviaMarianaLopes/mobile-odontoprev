@@ -3,8 +3,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import TelaInicial from "./src/Pages/TelaInicial";
-import TelaCadastro from "./src/Pages/TelaCadastro";
 import TelaUserHome from "./src/Pages/TelaUserHome";
+import TelaCadastroEnd from "./src/Pages/TelaCadastroEnd";
+import TelaCadastroSenha from "./src/Pages/TelaCadastroSenha";
+import TelaCadastroInfo from "./src/Pages/TelaCadastroInfo";
 
 const Stack = createStackNavigator();
 
@@ -19,13 +21,23 @@ export default function App() {
         />
         <Stack.Screen
           name="Tela Cadastro"
-          component={TelaCadastro}
+          component={TelaCadastroInfo}
           options={{ headerShown: false }}
         />
         <Stack.Screen
-         name="Tela Home"
-         component={TelaUserHome}
-         options={{headerShown: false}}
+          name="Tela Home"
+          component={TelaUserHome}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Tela Endereco"
+          component={TelaCadastroEnd}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Tela Senha"
+          component={TelaCadastroSenha}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
 
