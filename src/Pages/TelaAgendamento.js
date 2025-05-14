@@ -1,11 +1,11 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import HeaderHome from "../Components/HeaderHome";
+import HeaderServices from "../Components/HeaderServices";
 import AgendamentoForm from "../Components/AgendamentoForm";
 export default function TelaAgendamento() {
   return (
     <View style={styles.container}>
-      <HeaderHome/>
+      <HeaderServices/>
       <AgendamentoForm/>
     </View>
   );
