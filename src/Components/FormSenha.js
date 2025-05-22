@@ -2,20 +2,20 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-export default function FormSenha({onNext}) {
+export default function FormSenha({onSubmit}) {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
   const [erroSenha, setErroSenha] = useState("");
 
-  const handleNext = () => {
+  const handleSubmit  = () => {
     if (senha !== confirmarSenha) {
       setErroSenha("As senhas não coincidem.");
       return;
     }
     setErroSenha("");
-    onNext()
+    onSubmit({email, senha})
   };
 
   return (
@@ -54,7 +54,7 @@ export default function FormSenha({onNext}) {
         </TouchableOpacity>
         <TouchableOpacity 
           style={[styles.loginButton, senha !== confirmarSenha && styles.disabledButton]} 
-          onPress={handleNext}
+          onPress={handleSubmit}
           disabled={senha !== confirmarSenha || senha == ""}
         >
           <Text style={styles.loginText}>Criar conta</Text>
