@@ -1,22 +1,45 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, Text, TextInput, StyleSheet, Alert, TouchableOpacity } from "react-native";
+import {
+  View, Text, TextInput, StyleSheet,
+  Alert, TouchableOpacity
+} from "react-native";
 import { Checkbox } from "react-native-paper";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-
-export default function FormLogin({ onLogar }) {
+export default function FormLogin() {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [checked, setChecked] = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!email || !senha) {
       Alert.alert("Erro", "Preencha todos os campos!");
       return;
     }
 
-    onLogar({ email, senha });
+    try {
+      const response = await fetch("https://odontoprev-spring-mvc.onrender.com/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, senha }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        await AsyncStorage.setItem("pacienteId", JSON.stringify(data));
+        navigation.navigate("Tela Home");
+      } else {
+        const errorData = await response.json();
+        Alert.alert("Erro ao logar", errorData.message || "Erro desconhecido");
+      }
+    } catch (error) {
+      console.error("Erro na requisição:", error);
+      Alert.alert("Erro de conexão", "Tente novamente mais tarde.");
+    }
   };
 
   return (
@@ -31,6 +54,7 @@ export default function FormLogin({ onLogar }) {
           placeholder="E-mail"
           placeholderTextColor="#888"
           keyboardType="email-address"
+          autoCapitalize="none"
         />
       </View>
 
@@ -44,6 +68,7 @@ export default function FormLogin({ onLogar }) {
           secureTextEntry
         />
       </View>
+
       <View style={styles.checkboxContainer}>
         <Checkbox
           status={checked ? "checked" : "unchecked"}
@@ -55,7 +80,6 @@ export default function FormLogin({ onLogar }) {
         </TouchableOpacity>
       </View>
 
-
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.loginButton} onPress={handleSubmit}>
           <Text style={styles.loginText}>Login</Text>
@@ -63,8 +87,8 @@ export default function FormLogin({ onLogar }) {
         <TouchableOpacity style={styles.registerButton} onPress={() => navigation.navigate("Tela Cadastro")}>
           <Text style={styles.registerText}>Criar conta</Text>
         </TouchableOpacity>
-
       </View>
+
       <TouchableOpacity style={styles.helpContainer}>
         <Text style={styles.helpText}>Ajuda ?</Text>
       </TouchableOpacity>
@@ -78,8 +102,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 60,
     textAlign: "center",
-    paddingInline:50
-
+    paddingHorizontal: 50,
   },
   title: {
     fontSize: 24,
@@ -123,38 +146,35 @@ const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 50,
     marginRight: 10,
-    width: "147",
-    textAlign: "center",
+    width: 147,
+    alignItems: "center",
   },
   loginText: {
     color: "#fff",
     fontWeight: "bold",
     textAlign: "center",
-
   },
   registerButton: {
     borderWidth: 1,
     borderColor: "#007AFF",
     padding: 12,
     borderRadius: 50,
-    width: "147"
+    width: 147,
+    alignItems: "center",
   },
   registerText: {
     color: "#007AFF",
     fontWeight: "bold",
     textAlign: "center",
-
   },
   helpContainer: {
     width: "100%",
-    display: "flex",
     alignItems: "flex-end",
-    textAlign: "right",
-},
-helpText: {
+  },
+  helpText: {
     marginTop: 150,
     color: "#007AFF",
     fontSize: 14,
     textDecorationLine: "underline",
-},
+  },
 });
