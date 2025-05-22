@@ -4,7 +4,8 @@
 
 O aplicativo mobile da Odontoprev foi desenvolvido para complementar a solução de gerenciamento de pacientes, oferecendo uma interface acessível e intuitiva para os usuários. O principal objetivo da aplicação é reduzir os casos de sinistros fraudulentos e não usufruídos na Odontoprev, garantindo maior segurança e confiabilidade no processo de atendimento odontológico.
 
-Atualmente, o aplicativo permite o cadastro e login de pacientes, mas a solução como um todo busca implementar um modelo preditivo que analisa padrões suspeitos, além de funcionalidades que reforçam a segurança, como reconhecimento facial para autenticação antes e após as consultas. Dessa forma, o sistema contribui para a redução de fraudes, promovendo um ambiente mais seguro para pacientes e profissionais.
+O app permite o cadastro completo de pacientes, login com autenticação via API e gerenciamento das consultas (CRUD), funcionando como uma extensão prática e funcional do sistema principal.
+
 ## 👥 Equipe
 
 Celeste Mayumi Pereira Tanaka (RM552865) – Responsável pela API em C# e desenvolvimento do modelo preditivo.
@@ -19,6 +20,28 @@ Todas – Responsáveis pelo desenvolvimento mobile.
 
 O aplicativo foi desenvolvido utilizando React Native com Expo, seguindo uma estrutura modularizada para facilitar a escalabilidade e manutenção.
 
+
+## ✅ Requisitos atendidos
+
+- Telas completas de **CRUD de Consultas**:
+  - Criar consulta
+  - Listar consultas do paciente
+  - Desmarcar consulta
+- Integração com **API em Java (backend)**.
+- Utilização do **Async Storage** para armazenar o ID do paciente logado localmente, garantindo persistência e controle de sessão.
+
+---
+
+## 📲 Prints das Telas
+
+
+## 🔑 Credenciais de Teste
+Você pode utilizar as credenciais abaixo para testar o login e navegar nas funcionalidades:
+
+Email: thiago@gmail.com
+
+Senha: senha
+
 ## 📌 Estrutura do projeto:
 
 📦 odontoprev-mobile <br/>
@@ -27,16 +50,21 @@ O aplicativo foi desenvolvido utilizando React Native com Expo, seguindo uma est
  ┣ 📂 node_modules <br/>
  ┣ 📂 src <br/>
  ┃ ┣ 📂 components <br/>
+ ┃ ┃ ┣ 📄 AgendamentoForm.js <br/>
  ┃ ┃ ┣ 📄 FormCadastroInfo.js <br/>
  ┃ ┃ ┣ 📄 FormEndereco.js <br/>
  ┃ ┃ ┗ 📄 FormLogin.js <br/>
  ┃ ┃ ┗ 📄 FormSenha.js <br/>
  ┃ ┃ ┗ 📄 HeaderHome.js <br/>
+ ┃ ┃ ┣ 📄 HeaderServices.js <br/>
+ ┃ ┃ ┣ 📄 HistoricoConsultas.js <br/>
  ┃ ┃ ┗ 📄 ServicesGrid.js <br/>
  ┃ ┣ 📂 pages <br/>
+ ┃ ┃ ┣ 📄 TelaAgendamento.js  <br/>
  ┃ ┃ ┣ 📄 TelaCadastroEnd.js  <br/>
  ┃ ┃ ┣ 📄 TelaCadastroInfo.js <br/>
  ┃ ┃ ┣ 📄 TelaCadastroSenha.js <br/>
+ ┃ ┃ ┣ 📄 TelaHistorico.js  <br/>
  ┃ ┃ ┣ 📄 TelaInicial.js <br/>
  ┃ ┃ ┗ 📄 TelaUserHome.js <br/>
  ┣ 📄 App.js <br/>
