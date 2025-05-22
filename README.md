@@ -34,6 +34,21 @@ O aplicativo foi desenvolvido utilizando React Native com Expo, seguindo uma est
 
 ## 📲 Prints das Telas
 
+<p align="center">
+  <img src="./assets/tela-login.jpg" alt="Tela Login" width="200"/>
+  <img src="./assets/tela-cadastro-info.jpg" alt="Cadastro Info" width="200"/>
+  <img src="./assets/tela-cadastro-end.jpg" alt="Cadastro Endereço" width="200"/>
+</p>
+
+<p align="center">
+  <img src="./assets/tela-cadastro-senha.jpg" alt="Cadastro Senha" width="200"/>
+  <img src="./assets/tela-home.jpg" alt="Home paciente" width="200"/>
+  <img src="./assets/tela-agendamento.jpg" alt="Tela Agendamento" width="200"/>
+</p>
+
+<p align="center">
+  <img src="./assets/tela-historico.jpg" alt="Tela Historico" width="200"/>
+</p>
 
 ## 🔑 Credenciais de Teste
 Você pode utilizar as credenciais abaixo para testar o login e navegar nas funcionalidades:
