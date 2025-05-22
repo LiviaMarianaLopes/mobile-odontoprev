@@ -45,11 +45,12 @@ export default function AgendamentoForm() {
     const buscarDados = async () => {
       try {
         const [dentistasRes, unidadesRes] = await Promise.all([
-          axios.get("http://localhost:8080/api/dentistas"),
-          axios.get("http://localhost:8080/api/unidades"),
+          axios.get("https://odontoprev-spring-mvc.onrender.com/api/dentistas"),
+          axios.get("https://odontoprev-spring-mvc.onrender.com/api/unidades"),
         ]);
         setDentistas(dentistasRes.data);
         setUnidades(unidadesRes.data);
+    
       } catch (error) {
         Alert.alert("Erro", "Não foi possível carregar os dados.");
       }
@@ -71,12 +72,13 @@ export default function AgendamentoForm() {
     }
 
     const dataHoraFormatada = `${moment(dataConsulta).format("DD/MM/YYYY")} ${moment(horaConsulta).format("HH:mm")}`;
+    const idPaciente = await AsyncStorage.getItem("pacienteId");
 
     setCarregando(true);
     try {
-      await axios.post("http://localhost:8080/consultas", {
+      await axios.post("https://odontoprev-spring-mvc.onrender.com/api/consultas", {
         data: dataHoraFormatada,
-        idPaciente: 1,
+        idPaciente: idPaciente,
         idDentista: parseInt(dentistaSelecionado),
         idUnidade: parseInt(unidadeSelecionada),
         motivo: motivo,

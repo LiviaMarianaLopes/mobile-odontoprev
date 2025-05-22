@@ -11,7 +11,7 @@ const services = [
     { id: 6, name: "Na Consulta", icon: require("../../assets/hospital.png"), route: "NaConsulta" },
     { id: 7, name: "Dentista Online", icon: require("../../assets/dente-machucado.png"), route: "DentistaOnline" },
     { id: 8, name: "Benefícios", icon: require("../../assets/presente.png"), route: "Beneficios" },
-    { id: 9, name: "Minhas Consultas", icon: require("../../assets/tempo.png"), route: "MinhasConsultas" },
+    { id: 9, name: "Minhas Consultas", icon: require("../../assets/tempo.png"), route: "Tela Historico" },
 ];
 
 export default function ServicesGrid() {
